@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="id" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lapor Pemkab - Suara Warga</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#0d9488', // teal-600
+                            light: '#ccfbf1',  // teal-100
+                            dark: '#0f766e'    // teal-700
+                        },
+                        secondary: '#06b6d4' // cyan-500
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-800">
+
+    <div class="min-h-screen">
+        
+        <nav class="bg-white shadow-md sticky top-0 z-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="flex justify-between items-center h-16">
+                    <a href="index.html" class="text-2xl font-bold text-primary">
+                        Lapor<span class="font-light">Pemkab</span>
+                    </a>
+                    
+                    <div class="hidden sm:flex sm:space-x-8">
+                        <a href="index.html" class="text-primary border-b-2 border-primary inline-flex items-center px-1 pt-1 text-sm font-medium">Beranda</a>
+                        <a href="lapor.html" class="text-slate-500 hover:text-slate-700 hover:border-b-2 hover:border-slate-300 inline-flex items-center px-1 pt-1 text-sm font-medium transition-all duration-300">Buat Laporan</a>
+                        <a href="status.html" class="text-slate-500 hover:text-slate-700 hover:border-b-2 hover:border-slate-300 inline-flex items-center px-1 pt-1 text-sm font-medium transition-all duration-300">Cek Status</a>
+                    </div>
+                    
+                    <div class="hidden sm:block">
+                        <a href="admin_login.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-300 transform hover:scale-105">
+                            Login Admin
+                        </a>
+                    </div>
+
+                    <div class="sm:hidden flex items-center">
+                        <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
+                            <span class="sr-only">Buka menu</span>
+                            <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="mobile-menu" class="sm:hidden hidden animate-fade-in-down">
+                <div class="px-2 pt-2 pb-3 space-y-1">
+                    <a href="index.html" class="bg-primary-light text-primary block px-3 py-2 rounded-md text-base font-medium">Beranda</a>
+                    <a href="lapor.html" class="text-slate-700 hover:bg-slate-100 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">Buat Laporan</a>
+                    <a href="status.html" class="text-slate-700 hover:bg-slate-100 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">Cek Status</a>
+                    <a href="admin_login.html" class="bg-primary text-white block px-3 py-2 rounded-md text-base font-medium mt-2 transition-all duration-300 transform hover:scale-105">Login Admin</a>
+                </div>
+            </div>
+        </nav>
+
+        <header class="bg-gradient-to-r from-teal-600 to-cyan-700 text-white shadow-xl">
+            <div class="max-w-7xl mx-auto py-20 px-4 sm:px-6 lg:px-8 text-center">
+                <h1 class="text-4xl md:text-5xl font-extrabold tracking-tight">
+                    Suarakan Aspirasi Anda
+                </h1>
+                <p class="mt-4 text-lg md:text-xl text-teal-100 max-w-3xl mx-auto">
+                    Mewujudkan pemerintahan yang lebih transparan dan responsif. Sampaikan keluhan, saran, dan aspirasi Anda dengan mudah.
+                </p>
+                <div class="mt-10 flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
+                    <a href="lapor.html" class="inline-block px-8 py-3 border border-transparent text-base font-medium rounded-md text-teal-700 bg-white hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                        Buat Laporan Sekarang
+                    </a>
+                    <a href="status.html" class="inline-block px-8 py-3 border border-teal-200 text-base font-medium rounded-md text-white bg-white/10 hover:bg-white/20 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-white transition-all duration-300 transform hover:scale-105 hover:shadow-lg">
+                        Lacak Laporan Anda
+                    </a>
+                </div>
+            </div>
+        </header>
+
+        <main class="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl font-bold text-slate-900 text-center mb-12">
+                Laporan Publik Terkini
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer">
+                    <img class="h-56 w-full object-cover" src="https://awsimages.detik.net.id/community/media/visual/2023/05/08/10-km-jalan-kali-cbl-rusak-parah-dan-bahayakan-pengendara.jpeg?w=600&q=90" alt="Bukti Jalan Rusak">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Laporan Jalan Rusak</h3>
+                        <div class="flex justify-between items-center text-sm text-slate-600 mb-3">
+                            <span>Oleh: Budi Santoso</span>
+                            <span class="flex items-center font-medium text-green-600">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-5.43m4 0v5.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-5.43m4 0v5.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-5.43m-16 .333a2 2 0 011.106-1.787l.09-.044a2 2 0 012.206 1.787v.333m4 0a2 2 0 011.106-1.787l.09-.044a2 2 0 012.206 1.787v.333m4 0a2 2 0 011.106-1.787l.09-.044a2 2 0 012.206 1.787v.333M3 7.5a1.5 1.5 0 013 0v1.5a1.5 1.5 0 01-3 0v-1.5zM7 7.333v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43M3 4.5a1.5 1.5 0 013 0v1.5a1.5 1.5 0 01-3 0v-1.5zM7 4.333v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43"></path></svg>
+                                150 Suka
+                            </span>
+                        </div>
+                        <p class="text-slate-700 text-sm mb-4">
+                            Di Jalan Merdeka, terdapat lubang besar yang membahayakan pengendara motor...
+                        </p>
+                        <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">Diterima</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer">
+                    <img class="h-56 w-full object-cover" src="https://liberty-society.com/cdn/shop/articles/sampah_organik.jpg?v=1695202623" alt="Bukti Sampah">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Laporan Sampah</h3>
+                        <div class="flex justify-between items-center text-sm text-slate-600 mb-3">
+                            <span>Oleh: Anonim</span>
+                            <span class="flex items-center font-medium text-green-600">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-5.43m4 0v5.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-5.43m4 0v5.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-5.43m-16 .333a2 2 0 011.106-1.787l.09-.044a2 2 0 012.206 1.787v.333m4 0a2 2 0 011.106-1.787l.09-.044a2 2 0 012.206 1.787v.333m4 0a2 2 0 011.106-1.787l.09-.044a2 2 0 012.206 1.787v.333M3 7.5a1.5 1.5 0 013 0v1.5a1.5 1.5 0 01-3 0v-1.5zM7 7.333v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43M3 4.5a1.5 1.5 0 013 0v1.5a1.5 1.5 0 01-3 0v-1.5zM7 4.333v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43"></path></svg>
+                                75 Suka
+                            </span>
+                        </div>
+                        <p class="text-slate-700 text-sm mb-4">
+                            Terdapat tumpukan sampah di depan pasar yang sudah berbau tidak sedap...
+                        </p>
+                        <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full">Dalam Tinjauan</span>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer">
+                    <img class="h-56 w-full object-cover" src="https://intracs.co.id/wp-content/uploads/2024/10/Juru-parkir3-jpg.webp" alt="Bukti Parkir Liar">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Pelanggaran Parkir Liar</h3>
+                        <div class="flex justify-between items-center text-sm text-slate-600 mb-3">
+                            <span>Oleh: Budi Santoso</span>
+                            <span class="flex items-center font-medium text-green-600">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-5.43m4 0v5.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-5.43m4 0v5.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-5.43m-16 .333a2 2 0 011.106-1.787l.09-.044a2 2 0 012.206 1.787v.333m4 0a2 2 0 011.106-1.787l.09-.044a2 2 0 012.206 1.787v.333m4 0a2 2 0 011.106-1.787l.09-.044a2 2 0 012.206 1.787v.333M3 7.5a1.5 1.5 0 013 0v1.5a1.5 1.5 0 01-3 0v-1.5zM7 7.333v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43M3 4.5a1.5 1.5 0 013 0v1.5a1.5 1.5 0 01-3 0v-1.5zM7 4.333v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43"></path></svg>
+                                100 Suka
+                            </span>
+                        </div>
+                        <p class="text-slate-700 text-sm mb-4">
+                            Banyak mobil parkir liar di bahu jalan Jl. Sudirman setiap pagi...
+                        </p>
+                        <span class="inline-block bg-teal-100 text-teal-800 text-xs font-semibold px-3 py-1 rounded-full">Selesai</span>
+                    </div>
+                </div>
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer">
+                    <img class="h-56 w-full object-cover" src="https://awsimages.detik.net.id/community/media/visual/2023/05/08/10-km-jalan-kali-cbl-rusak-parah-dan-bahayakan-pengendara.jpeg?w=600&q=90" alt="Bukti Jalan Rusak">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Laporan Jalan Rusak</h3>
+                        <div class="flex justify-between items-center text-sm text-slate-600 mb-3">
+                            <span>Oleh: Budi Santoso</span>
+                            <span class="flex items-center font-medium text-green-600">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-5.43m4 0v5.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-5.43m4 0v5.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-5.43m-16 .333a2 2 0 011.106-1.787l.09-.044a2 2 0 012.206 1.787v.333m4 0a2 2 0 011.106-1.787l.09-.044a2 2 0 012.206 1.787v.333m4 0a2 2 0 011.106-1.787l.09-.044a2 2 0 012.206 1.787v.333M3 7.5a1.5 1.5 0 013 0v1.5a1.5 1.5 0 01-3 0v-1.5zM7 7.333v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43M3 4.5a1.5 1.5 0 013 0v1.5a1.5 1.5 0 01-3 0v-1.5zM7 4.333v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43"></path></svg>
+                                150 Suka
+                            </span>
+                        </div>
+                        <p class="text-slate-700 text-sm mb-4">
+                            Di Jalan Merdeka, terdapat lubang besar yang membahayakan pengendara motor...
+                        </p>
+                        <span class="inline-block bg-green-100 text-green-800 text-xs font-semibold px-3 py-1 rounded-full">Diterima</span>
+                    </div>
+                </div>
+                
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer">
+                    <img class="h-56 w-full object-cover" src="https://liberty-society.com/cdn/shop/articles/sampah_organik.jpg?v=1695202623" alt="Bukti Sampah">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Laporan Sampah</h3>
+                        <div class="flex justify-between items-center text-sm text-slate-600 mb-3">
+                            <span>Oleh: Anonim</span>
+                            <span class="flex items-center font-medium text-green-600">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-5.43m4 0v5.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-5.43m4 0v5.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-5.43m-16 .333a2 2 0 011.106-1.787l.09-.044a2 2 0 012.206 1.787v.333m4 0a2 2 0 011.106-1.787l.09-.044a2 2 0 012.206 1.787v.333m4 0a2 2 0 011.106-1.787l.09-.044a2 2 0 012.206 1.787v.333M3 7.5a1.5 1.5 0 013 0v1.5a1.5 1.5 0 01-3 0v-1.5zM7 7.333v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43M3 4.5a1.5 1.5 0 013 0v1.5a1.5 1.5 0 01-3 0v-1.5zM7 4.333v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43"></path></svg>
+                                75 Suka
+                            </span>
+                        </div>
+                        <p class="text-slate-700 text-sm mb-4">
+                            Terdapat tumpukan sampah di depan pasar yang sudah berbau tidak sedap...
+                        </p>
+                        <span class="inline-block bg-yellow-100 text-yellow-800 text-xs font-semibold px-3 py-1 rounded-full">Dalam Tinjauan</span>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg overflow-hidden transform transition-all duration-300 hover:shadow-2xl hover:-translate-y-2 cursor-pointer">
+                    <img class="h-56 w-full object-cover" src="https://intracs.co.id/wp-content/uploads/2024/10/Juru-parkir3-jpg.webp" alt="Bukti Parkir Liar">
+                    <div class="p-6">
+                        <h3 class="text-xl font-bold text-slate-900 mb-2">Pelanggaran Parkir Liar</h3>
+                        <div class="flex justify-between items-center text-sm text-slate-600 mb-3">
+                            <span>Oleh: Budi Santoso</span>
+                            <span class="flex items-center font-medium text-green-600">
+                                <svg class="w-4 h-4 mr-1" fill="currentColor" viewBox="0 0 20 20"><path d="M2 10.5a1.5 1.5 0 113 0v6a1.5 1.5 0 01-3 0v-6zM6 10.333v5.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-5.43m4 0v5.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-5.43m4 0v5.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-5.43m-16 .333a2 2 0 011.106-1.787l.09-.044a2 2 0 012.206 1.787v.333m4 0a2 2 0 011.106-1.787l.09-.044a2 2 0 012.206 1.787v.333m4 0a2 2 0 011.106-1.787l.09-.044a2 2 0 012.206 1.787v.333M3 7.5a1.5 1.5 0 013 0v1.5a1.5 1.5 0 01-3 0v-1.5zM7 7.333v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43M3 4.5a1.5 1.5 0 013 0v1.5a1.5 1.5 0 01-3 0v-1.5zM7 4.333v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43m4 0v1.43a2 2 0 001.106 1.787l.09.044a2 2 0 002.206-1.787v-1.43"></path></svg>
+                                100 Suka
+                            </span>
+                        </div>
+                        <p class="text-slate-700 text-sm mb-4">
+                            Banyak mobil parkir liar di bahu jalan Jl. Sudirman setiap pagi...
+                        </p>
+                        <span class="inline-block bg-teal-100 text-teal-800 text-xs font-semibold px-3 py-1 rounded-full">Selesai</span>
+                    </div>
+                </div>
+
+            </div>
+        </main>
+        
+      
+
+    </div>
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+    </script>
+</body>
+</html>

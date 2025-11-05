@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Buat Laporan Baru - Lapor Pemkab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#0d9488', // teal-600
+                            light: '#ccfbf1',  // teal-100
+                            dark: '#0f766e'    // teal-700
+                        },
+                        secondary: '#06b6d4' // cyan-500
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-100">
+
+    <nav class="bg-white shadow-md sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <a href="index.html" class="text-2xl font-bold text-primary">
+                    Lapor<span class="font-light">Pemkab</span>
+                </a>
+                
+                <div class="hidden sm:flex sm:space-x-8">
+                    <a href="index.html" class="text-slate-500 hover:text-slate-700 hover:border-b-2 hover:border-slate-300 inline-flex items-center px-1 pt-1 text-sm font-medium transition-all duration-300">Beranda</a>
+                    <a href="lapor.html" class="text-primary border-b-2 border-primary inline-flex items-center px-1 pt-1 text-sm font-medium">Buat Laporan</a>
+                    <a href="status.html" class="text-slate-500 hover:text-slate-700 hover:border-b-2 hover:border-slate-300 inline-flex items-center px-1 pt-1 text-sm font-medium transition-all duration-300">Cek Status</a>
+                </div>
+                
+                <div class="hidden sm:block">
+                    <a href="admin_login.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-300 transform hover:scale-105">
+                        Login Admin
+                    </a>
+                </div>
+
+                <div class="sm:hidden flex items-center">
+                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
+                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div id="mobile-menu" class="sm:hidden hidden animate-fade-in-down">
+            <div class="px-2 pt-2 pb-3 space-y-1">
+                <a href="index.html" class="text-slate-700 hover:bg-slate-100 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">Beranda</a>
+                <a href="lapor.html" class="bg-primary-light text-primary block px-3 py-2 rounded-md text-base font-medium">Buat Laporan</a>
+                <a href="status.html" class="text-slate-700 hover:bg-slate-100 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">Cek Status</a>
+                <a href="admin_login.html" class="bg-primary text-white block px-3 py-2 rounded-md text-base font-medium mt-2 transition-all duration-300 transform hover:scale-105">Login Admin</a>
+            </div>
+        </div>
+    </nav>
+
+    <main class="py-12">
+        <div class="max-w-4xl mx-auto bg-white p-8 md:p-10 rounded-lg shadow-xl">
+            <header class="text-center mb-8">
+                <h1 class="text-3xl font-bold text-slate-900">Formulir Pengaduan Warga</h1>
+                <p class="text-slate-600 mt-2">Silakan isi data laporan Anda dengan lengkap dan benar.</p>
+            </header>
+
+            <form id="reportForm" class="space-y-8">
+                
+                <fieldset class="border-t border-slate-200 pt-6">
+                    <legend class="text-xl font-semibold text-slate-800 mb-4">Langkah 1: Identitas Anda</legend>
+                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                        <div>
+                            <label for="nm_pelapor" class="block text-sm font-medium text-slate-700 mb-1">Nama Lengkap Sesuai KTP</label>
+                            <input type="text" id="nm_pelapor" name="nm_pelapor" placeholder="Contoh: Budi Santoso" required
+                                   class="w-full px-4 py-2 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
+                        </div>
+                        <div>
+                            <label for="nik" class="block text-sm font-medium text-slate-700 mb-1">NIK (Nomor Induk Kependudukan)</label>
+                            <input type="text" id="nik" name="nik" placeholder="16 Digit NIK Anda" required maxlength="16"
+                                   class="w-full px-4 py-2 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
+                        </div>
+                    </div>
+                    <div class="mt-4 flex items-center">
+                        <input type="checkbox" id="visibilitas_nama" name="visibilitas_nama"
+                               class="h-4 w-4 text-primary border-slate-300 rounded focus:ring-primary">
+                        <label for="visibilitas_nama" class="ml-2 block text-sm text-slate-900">Laporkan secara Anonim (Nama Anda tidak akan dipublikasikan)</label>
+                    </div>
+                </fieldset>
+
+                <fieldset class="border-t border-slate-200 pt-6">
+                    <legend class="text-xl font-semibold text-slate-800 mb-4">Langkah 2: Detail Laporan</legend>
+                    <div class="space-y-6">
+                        <div>
+                            <label for="nm_laporan" class="block text-sm font-medium text-slate-700 mb-1">Judul Laporan</label>
+                            <input type="text" id="nm_laporan" name="nm_laporan" placeholder="Contoh: Lampu Jalan Mati di Jl. Merdeka" required
+                                   class="w-full px-4 py-2 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
+                        </div>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                            <div>
+                                <label for="bentuk_laporan" class="block text-sm font-medium text-slate-700 mb-1">Bentuk Laporan</label>
+                                <select id="bentuk_laporan" name="bentuk_laporan" required
+                                        class="w-full px-4 py-2 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
+                                    <option value="">-- Pilih Bentuk Laporan --</option>
+                                    <option value="keluhan">Keluhan</option>
+                                    <option value="saran">Saran</option>
+                                    <option value="aspirasi">Aspirasi</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="jenis_laporan" class="block text-sm font-medium text-slate-700 mb-1">Jenis Laporan</label>
+                                <select id="jenis_laporan" name="jenis_laporan" required
+                                        class="w-full px-4 py-2 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
+                                    <option value="">-- Pilih Jenis Laporan --</option>
+                                    <option value="1">Jalan Rusak</option>
+                                    <option value="2">Sampah Menumpuk</option>
+                                    <option value="3">Lampu Jalan Mati</option>
+                                    <option value="4">Pelanggaran Lalu Lintas</option>
+                                </select>
+                            </div>
+                        </div>
+
+                        <div>
+                            <label for="detail_laporan" class="block text-sm font-medium text-slate-700 mb-1">Detail Isi Laporan</label>
+                            <textarea id="detail_laporan" name="detail_laporan" rows="4" placeholder="Tuliskan detail keluhan/saran/aspirasi Anda di sini..." required
+                                      class="w-full px-4 py-2 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300"></textarea>
+                        </div>
+                    </div>
+                </fieldset>
+
+                <fieldset class="border-t border-slate-200 pt-6">
+                    <legend class="text-xl font-semibold text-slate-800 mb-4">Langkah 3: Tujuan & Bukti</legend>
+                    <div class="space-y-6">
+                        <div>
+                            <label for="instansi_tujuan" class="block text-sm font-medium text-slate-700 mb-1">Ditujukan Kepada</label>
+                            <select id="instansi_tujuan" name="instansi_tujuan" required
+                                    class="w-full px-4 py-2 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
+                                <option value="">-- Pilih Instansi Tujuan --</option>
+                                <option value="1">Dinas Pekerjaan Umum</option>
+                                <option value="2">Dinas Lingkungan Hidup</option>
+                                <option value="3">Satuan Polisi Pamong Praja</option>
+                                <option value="4">Dinas Perhubungan</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label for="bukti_laporan" class="block text-sm font-medium text-slate-700 mb-1">Lampirkan Bukti (Foto)</label>
+                            <input type="file" id="bukti_laporan" name="bukti_laporan" accept="image/*" required
+                                   class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-primary-light file:text-primary hover:file:bg-teal-200 transition-colors duration-300 cursor-pointer">
+                            <p class="text-xs text-slate-500 mt-1">Bukti yang relevan akan mempercepat proses verifikasi.</p>
+                        </div>
+                    </div>
+                </fieldset>
+                
+                <div class="border-t border-slate-200 pt-6">
+                    <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-lg text-lg font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-300 transform hover:scale-[1.02]">
+                        Kirim Laporan
+                    </button>
+                </div>
+
+            </form>
+        </div>
+    </main>
+
+
+
+    <script>
+        const mobileMenuButton = document.getElementById('mobile-menu-button');
+        const mobileMenu = document.getElementById('mobile-menu');
+        mobileMenuButton.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        // Simulasi Form
+        document.getElementById('reportForm').addEventListener('submit', function(event) {
+            event.preventDefault(); 
+            alert('Laporan Anda Berhasil Dikirim (Simulasi)!\nDi aplikasi nyata, Anda akan mendapatkan nomor tiket.');
+            window.location.href = 'status.html';
+        });
+    </script>
+</body>
+</html>

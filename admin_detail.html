@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Detail Laporan #3 - Lapor Pemkab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: {
+                            DEFAULT: '#0d9488', // teal-600
+                            dark: '#0f766e'    // teal-700
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-100">
+
+    <div class="flex h-screen bg-slate-100">
+        <aside id="admin-sidebar" class="w-64 bg-slate-900 text-slate-300 p-5 flex-col shadow-lg fixed lg:relative z-40 h-full hidden lg:flex transition-all duration-300">
+            <div class="text-white text-2xl font-bold mb-10 text-center">
+                Admin<span class="font-light text-primary">Pemkab</span>
+            </div>
+
+            <nav class="flex-1">
+                <ul class="space-y-2">
+                    <li>
+                        <a href="admin_dashboard.html" class="flex items-center py-2.5 px-4 rounded hover:bg-slate-700 hover:text-white transition-all duration-300 transform hover:scale-105">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1V9a1 1 0 011-1h2a1 1 0 011 1v10a1 1 0 001 1h3m-6 0V9"></path></svg>
+                            Dasbor
+                        </a>
+                    </li>
+                    <li>
+                        <a href="admin_detail.html" class="flex items-center py-2.5 px-4 rounded bg-primary text-white font-semibold transition-all duration-300 transform hover:scale-105">
+                            <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            Manajemen Laporan
+                        </a>
+                    </li>
+                </ul>
+            </nav>
+
+            <div class="mt-auto">
+                <a href="admin_login.html" class="flex items-center py-2.5 px-4 rounded hover:bg-red-700 hover:text-white transition-all duration-300 text-red-400 transform hover:scale-105">
+                    <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 16l4-4m0 0l-4-4m4 4H7m6 4v1a3 3 0 01-3 3H6a3 3 0 01-3-3V7a3 3 0 013-3h4a3 3 0 013 3v1"></path></svg>
+                    Logout
+                </a>
+            </div>
+        </aside>
+
+        <div class="flex-1 flex flex-col overflow-hidden lg:ml-64">
+            <header class="lg:hidden bg-white shadow-md p-4 flex justify-between items-center">
+                <h1 class="text-xl font-bold text-primary">Detail Laporan</h1>
+                <button id="sidebar-toggle" class="p-2 rounded-md text-slate-500 hover:bg-slate-100 transition-all duration-300">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </header>
+
+            <main class="flex-1 overflow-y-auto p-8">
+                <header class="mb-8 hidden lg:block">
+                    <h1 class="text-3xl font-bold text-slate-900">Detail Laporan #3</h1>
+                    <p class="text-slate-600 mt-1">Laporan Jalan Rusak Lain <span class="px-2 py-0.5 text-xs font-semibold rounded-full bg-orange-100 text-orange-800 ml-1">Pending</span></p>
+                </header>
+
+                <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+                    
+                    <div class="lg:col-span-2 bg-white p-8 rounded-lg shadow-lg space-y-6">
+                        
+                        <section>
+                            <h3 class="text-xl font-semibold text-slate-800 border-b border-slate-200 pb-2 mb-4">Informasi Laporan</h3>
+                            <dl class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3">
+                                <div class="sm:col-span-1">
+                                    <dt class="text-sm font-medium text-slate-500">Judul Laporan</dt>
+                                    <dd class="mt-1 text-base text-slate-900">Laporan Jalan Rusak Lain</dd>
+                                </div>
+                                <div class="sm:col-span-1">
+                                    <dt class="text-sm font-medium text-slate-500">Status</dt>
+                                    <dd class="mt-1 text-base text-slate-900">
+                                        <span class="px-2 py-0.5 text-xs font-semibold rounded-full bg-orange-100 text-orange-800">Pending</span>
+                                    </dd>
+                                </div>
+                                <div class="sm:col-span-1">
+                                    <dt class="text-sm font-medium text-slate-500">Bentuk Laporan</dt>
+                                    <dd class="mt-1 text-base text-slate-900">Keluhan</dd>
+                                </div>
+                                <div class="sm:col-span-1">
+                                    <dt class="text-sm font-medium text-slate-500">Jenis Laporan</dt>
+                                    <dd class="mt-1 text-base text-slate-900">Jalan Rusak</dd>
+                                </div>
+                            </dl>
+                        </section>
+
+                        <section>
+                            <h3 class="text-xl font-semibold text-slate-800 border-b border-slate-200 pb-2 mb-4">Isi Laporan</h3>
+                            <p class="text-slate-700 leading-relaxed">
+                                Jalan di Jl. Diponegoro, dekat lampu merah, ada lubang yang dalam sekali.
+                            </p>
+                        </section>
+                        
+                        <section>
+                            <h3 class="text-xl font-semibold text-slate-800 border-b border-slate-200 pb-2 mb-4">Bukti dari Pelapor</h3>
+                            <img src="https://awsimages.detik.net.id/community/media/visual/2023/05/08/10-km-jalan-kali-cbl-rusak-parah-dan-bahayakan-pengendara.jpeg?w=600&q=90" alt="Bukti dari pelapor"
+                                 class="rounded-lg border border-slate-200 w-full max-w-lg">
+                        </section>
+                        
+                        <section>
+                            <h3 class="text-xl font-semibold text-slate-800 border-b border-slate-200 pb-2 mb-4">Informasi Pelapor</h3>
+                            <dl class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-3">
+                                <div class="sm:col-span-1">
+                                    <dt class="text-sm font-medium text-slate-500">Nama Pelapor</dt>
+                                    <dd class="mt-1 text-base text-slate-900">Joko Susilo</dd>
+                                </div>
+                                <div class="sm:col-span-1">
+                                    <dt class="text-sm font-medium text-slate-500">NIK</dt>
+                                    <dd class="mt-1 text-base text-slate-900">3456789012345678</dd>
+
+                                </div>
+                                <div class="sm:col-span-1">
+                                    <dt class="text-sm font-medium text-slate-500">Visibilitas</dt>
+                                    <dd class="mt-1 text-base text-slate-900">Publik (Tidak Anonim)</dd>
+                                </div>
+                            </dl>
+                        </section>
+                    </div>
+                    
+                    <div class="lg:col-span-1 bg-white p-8 rounded-lg shadow-lg h-fit space-y-6">
+                        <h3 class="text-xl font-semibold text-slate-800">Tindakan & Tanggapan</h3>
+                        <form id="responseForm" class="space-y-4">
+                            <div>
+                                <label for="status" class="block text-sm font-medium text-slate-700 mb-1">Ubah Status Laporan</label>
+                                <select id="status" name="status"
+                                        class="w-full px-4 py-2 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
+                                    <option value="pending" selected>Pending</option>
+                                    <option value="dalam_tinjauan">Dalam Tinjauan</option>
+                                    <option value="diterima">Diterima</option>
+                                    <option value="selesai">Selesai</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="isi_tanggapan" class="block text-sm font-medium text-slate-700 mb-1">Isi Tanggapan</label>
+                                <textarea id="isi_tanggapan" name="isi_tanggapan" rows="4" placeholder="Tuliskan tanggapan atau tindak lanjut..."
+                                          class="w-full px-4 py-2 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300"></textarea>
+                            </div>
+                            <div>
+                                <label for="bukti_tanggapan" class="block text-sm font-medium text-slate-700 mb-1">Upload Bukti Tanggapan</label>
+                                <input type="file" id="bukti_tanggapan" name="bukti_tanggapan"
+                                       class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-primary-light file:text-primary hover:file:bg-teal-200 transition-colors duration-300 cursor-pointer">
+                            </div>
+                            <button type="submit"
+                                    class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-lg text-base font-medium text-white bg-primary
+                                           hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary
+                                           transition-all duration-300 transform hover:scale-105">
+                                Simpan & Kirim Tanggapan
+                            </button>
+                        </form>
+                    </div>
+
+                </div>
+
+            </main>
+        </div>
+    </div>
+    
+    <script>
+        const sidebarButton = document.getElementById('sidebar-toggle');
+        const sidebar = document.getElementById('admin-sidebar');
+        
+        sidebarButton.addEventListener('click', () => {
+            sidebar.classList.toggle('hidden');
+        });
+        
+        // Simulasi Form
+        document.getElementById('responseForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('Tanggapan Berhasil Disimpan (Simulasi)!');
+            window.location.href = 'admin_dashboard.html';
+        });
+    </script>
+</body>
+</html>

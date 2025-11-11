@@ -11,8 +11,16 @@
                 extend: {
                     colors: {
                         primary: {
-                            DEFAULT: '#0d9488', // teal-600
-                            dark: '#0f766e'    // teal-700
+                            DEFAULT: '#4f46e5', // indigo-600
+                            dark: '#3730a3'    // indigo-800
+                        },
+                        // Palet Status
+                        status: {
+                            pending: '#f97316', // orange-500
+                            review: '#eab308',  // yellow-500
+                            progress: '#3b82f6', // blue-500
+                            done: '#22c55e',    // green-500
+                            reject: '#ef4444'   // red-500
                         }
                     }
                 }
@@ -37,7 +45,7 @@
                         </a>
                     </li>
                     <li>
-                        <a href="admin_detail.html" class="flex items-center py-2.5 px-4 rounded hover:bg-slate-700 hover:text-white transition-all duration-300 transform hover:scale-105">
+                        <a href="#laporan-table" class="flex items-center py-2.5 px-4 rounded hover:bg-slate-700 hover:text-white transition-all duration-300 transform hover:scale-105">
                             <svg class="w-5 h-5 mr-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
                             Manajemen Laporan
                         </a>
@@ -61,7 +69,7 @@
                 </button>
             </header>
 
-            <main class="flex-1 overflow-y-auto p-8">
+            <main class="flex-1 overflow-y-auto p-4 sm:p-8">
                 <header class="mb-8 hidden lg:block">
                     <h1 class="text-3xl font-bold text-slate-900">Dasbor Admin (Dinas Pekerjaan Umum)</h1>
                     <p class="text-slate-600 mt-1">Selamat datang, Admin PU. Berikut ringkasan laporan instansi Anda.</p>
@@ -73,81 +81,115 @@
                             <h4 class="text-sm font-medium text-slate-500 uppercase tracking-wider">Laporan Pending</h4>
                             <p class="text-3xl font-bold text-slate-900">1</p>
                         </div>
-                        <div class="p-3 rounded-full bg-orange-100 text-orange-600">
+                        <div class="p-3 rounded-full bg-orange-100 text-status-pending">
                             <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
                         </div>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-lg flex items-center justify-between transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                        <div>
-                            <h4 class="text-sm font-medium text-slate-500 uppercase tracking-wider">Dalam Tinjauan</h4>
-                            <p class="text-3xl font-bold text-slate-900">0</p>
-                        </div>
-                        <div class="p-3 rounded-full bg-yellow-100 text-yellow-600">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.478 0-8.268-2.943-9.542-7z"></path></svg>
-                        </div>
+                        <div><h4 class="text-sm font-medium text-slate-500 uppercase tracking-wider">Dalam Tinjauan</h4><p class="text-3xl font-bold text-slate-900">1</p></div>
+                        <div class="p-3 rounded-full bg-yellow-100 text-status-review"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.478 0-8.268-2.943-9.542-7z"></path></svg></div>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-lg flex items-center justify-between transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                        <div>
-                            <h4 class="text-sm font-medium text-slate-500 uppercase tracking-wider">Diterima</h4>
-                            <p class="text-3xl font-bold text-slate-900">1</p>
-                        </div>
-                        <div class="p-3 rounded-full bg-green-100 text-green-600">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
-                        </div>
+                        <div><h4 class="text-sm font-medium text-slate-500 uppercase tracking-wider">Dalam Pengerjaan</h4><p class="text-3xl font-bold text-slate-900">1</p></div>
+                        <div class="p-3 rounded-full bg-blue-100 text-status-progress"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg></div>
                     </div>
                     <div class="bg-white p-6 rounded-lg shadow-lg flex items-center justify-between transform transition-all duration-300 hover:shadow-xl hover:-translate-y-1">
-                        <div>
-                            <h4 class="text-sm font-medium text-slate-500 uppercase tracking-wider">Selesai</h4>
-                            <p class="text-3xl font-bold text-slate-900">5</p>
-                        </div>
-                        <div class="p-3 rounded-full bg-teal-100 text-teal-600">
-                            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>
-                        </div>
+                        <div><h4 class="text-sm font-medium text-slate-500 uppercase tracking-wider">Selesai</h4><p class="text-3xl font-bold text-slate-900">5</p></div>
+                        <div class="p-3 rounded-full bg-green-100 text-status-done"><svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg></div>
                     </div>
                 </div>
 
-                <div class="bg-white rounded-lg shadow-lg overflow-hidden">
-                    <h2 class="text-xl font-bold text-slate-900 p-6 border-b border-slate-200">Laporan Masuk Terbaru</h2>
+                <div id="laporan-table" class="bg-white rounded-lg shadow-lg overflow-hidden">
+                    <div class="p-6 border-b border-slate-200">
+                        <h2 class="text-xl font-bold text-slate-900">Filter Verifikasi Laporan</h2>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 mt-4">
+                            <div>
+                                <label for="filter-status" class="block text-sm font-medium text-slate-700 mb-1">Status</label>
+                                <select id="filter-status" class="w-full px-3 py-2 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
+                                    <option value="all">Semua Status</option>
+                                    <option value="pending">Pending</option>
+                                    <option value="review">Dalam Tinjauan</option>
+                                    <option value="progress">Dalam Pengerjaan</option>
+                                    <option value="done">Selesai</option>
+                                    <option value="reject">Ditolak</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="sort-by" class="block text-sm font-medium text-slate-700 mb-1">Urutkan (Anti-Hoaks)</label>
+                                <select id="sort-by" class="w-full px-3 py-2 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
+                                    <option value="terbaru">Terbaru</option>
+                                    <option value="serupa">Laporan Serupa Terbanyak</option>
+                                    <option value="like">Like Terbanyak</option>
+                                </select>
+                            </div>
+                            <div>
+                                <label for="filter-bukti" class="block text-sm font-medium text-slate-700 mb-1">Filter Bukti</label>
+                                <select id="filter-bukti" class="w-full px-3 py-2 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
+                                    <option value="all">Semua</option>
+                                    <option value="ada">Ada Bukti</option>
+                                    <option value="tidak">Tanpa Bukti</option>
+                                </select>
+                            </div>
+                            <div class="self-end">
+                                <button class="w-full sm:w-auto px-4 py-2 border border-transparent rounded-md shadow-sm text-sm font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-300 transform hover:scale-105">
+                                    Terapkan Filter
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                    
                     <div class="overflow-x-auto">
                         <table class="w-full min-w-full">
                             <thead class="bg-slate-50">
                                 <tr>
-                                    <th class="p-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">ID</th>
-                                    <th class="p-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Judul Laporan</th>
-                                    <th class="p-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Pelapor</th>
+                                    <th class="p-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Laporan</th>
                                     <th class="p-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Status</th>
-                                    <th class="p-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Tgl Masuk</th>
+                                    <th class="p-4 text-center text-xs font-semibold text-slate-600 uppercase tracking-wider">Serupa</th>
+                                    <th class="p-4 text-center text-xs font-semibold text-slate-600 uppercase tracking-wider">Likes</th>
+                                    <th class="p-4 text-center text-xs font-semibold text-slate-600 uppercase tracking-wider">Bukti</th>
                                     <th class="p-4 text-left text-xs font-semibold text-slate-600 uppercase tracking-wider">Aksi</th>
                                 </tr>
                             </thead>
                             <tbody class="divide-y divide-slate-200">
                                 <tr class="hover:bg-slate-50 transition-colors duration-200">
-                                    <td class="p-4 whitespace-nowrap text-sm text-slate-800">3</td>
-                                    <td class="p-4 whitespace-nowrap text-sm font-medium text-slate-900">Laporan Jalan Rusak Lain</td>
-                                    <td class="p-4 whitespace-nowrap text-sm text-slate-600">Joko Susilo</td>
-                                    <td class="p-4 whitespace-nowrap text-sm">
-                                        <span class="px-2 py-0.5 text-xs font-semibold rounded-full bg-orange-100 text-orange-800">Pending</span>
-                                    </td>
-                                    <td class="p-4 whitespace-nowrap text-sm text-slate-600">05 Nov 2025</td>
-                                    <td class="p-4 whitespace-nowrap text-sm">
-                                        <a href="admin_detail.html" class="px-3 py-1 text-xs font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition-all duration-300 transform hover:scale-105">
-                                            Tanggapi
-                                        </a>
-                                    </td>
+                                    <td class="p-4 whitespace-nowrap"><div class="text-sm font-medium text-slate-900">Lampu Jalan Mati</div><div class="text-xs text-slate-500">Oleh: Dedi Mulyadi</div></td>
+                                    <td class="p-4 whitespace-nowrap text-sm"><span class="px-2 py-0.5 text-xs font-semibold rounded-full bg-orange-100 text-status-pending">Pending</span></td>
+                                    <td class="p-4 whitespace-nowrap text-sm text-slate-900 font-bold text-center">3</td>
+                                    <td class="p-4 whitespace-nowrap text-sm text-slate-900 font-bold text-center">30</td>
+                                    <td class="p-4 whitespace-nowrap text-sm text-green-600 font-semibold text-center">Ada</td>
+                                    <td class="p-4 whitespace-nowrap text-sm"><a href="admin_detail.html" class="px-3 py-1 text-xs font-medium rounded-md text-white bg-primary hover:bg-primary-dark transition-all duration-300 transform hover:scale-105">Tanggapi</a></td>
                                 </tr>
                                 <tr class="hover:bg-slate-50 transition-colors duration-200">
-                                    <td class="p-4 whitespace-nowrap text-sm text-slate-800">1</td>
-                                    <td class="p-4 whitespace-nowrap text-sm font-medium text-slate-900">Laporan Jalan Rusak</td>
-                                    <td class="p-4 whitespace-nowrap text-sm text-slate-600">Budi Santoso</td>
-                                    <td class="p-4 whitespace-nowrap text-sm">
-                                        <span class="px-2 py-0.5 text-xs font-semibold rounded-full bg-green-100 text-green-800">Diterima</span>
-                                    </td>
-                                    <td class="p-4 whitespace-nowrap text-sm text-slate-600">04 Nov 2025</td>
-                                    <td class="p-4 whitespace-nowrap text-sm">
-                                        <a href="admin_detail.html" class="px-3 py-1 text-xs font-medium rounded-md text-slate-600 bg-slate-200 hover:bg-slate-300 transition-all duration-300 transform hover:scale-105">
-                                            Lihat
-                                        </a>
-                                    </td>
+                                    <td class="p-4 whitespace-nowrap"><div class="text-sm font-medium text-slate-900">Laporan Sampah</div><div class="text-xs text-slate-500">Oleh: Anonim</div></td>
+                                    <td class="p-4 whitespace-nowrap text-sm"><span class="px-2 py-0.5 text-xs font-semibold rounded-full bg-yellow-100 text-status-review">Dalam Tinjauan</span></td>
+                                    <td class="p-4 whitespace-nowrap text-sm text-slate-900 font-bold text-center">12</td>
+                                    <td class="p-4 whitespace-nowrap text-sm text-slate-900 font-bold text-center">75</td>
+                                    <td class="p-4 whitespace-nowrap text-sm text-green-600 font-semibold text-center">Ada</td>
+                                    <td class="p-4 whitespace-nowrap text-sm"><a href="admin_detail.html" class="px-3 py-1 text-xs font-medium rounded-md text-slate-600 bg-slate-200 hover:bg-slate-300 transition-all duration-300 transform hover:scale-105">Lihat</a></td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition-colors duration-200">
+                                    <td class="p-4 whitespace-nowrap"><div class="text-sm font-medium text-slate-900">Laporan Jalan Rusak</div><div class="text-xs text-slate-500">Oleh: Budi Santoso</div></td>
+                                    <td class="p-4 whitespace-nowrap text-sm"><span class="px-2 py-0.5 text-xs font-semibold rounded-full bg-blue-100 text-status-progress">Dalam Pengerjaan</span></td>
+                                    <td class="p-4 whitespace-nowrap text-sm text-slate-900 font-bold text-center">5</td>
+                                    <td class="p-4 whitespace-nowrap text-sm text-slate-900 font-bold text-center">150</td>
+                                    <td class="p-4 whitespace-nowrap text-sm text-green-600 font-semibold text-center">Ada</td>
+                                    <td class="p-4 whitespace-nowrap text-sm"><a href="admin_detail.html" class="px-3 py-1 text-xs font-medium rounded-md text-slate-600 bg-slate-200 hover:bg-slate-300 transition-all duration-300 transform hover:scale-105">Lihat</a></td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition-colors duration-200">
+                                    <td class="p-4 whitespace-nowrap"><div class="text-sm font-medium text-slate-900">Pelanggaran Parkir Liar</div><div class="text-xs text-slate-500">Oleh: Budi Santoso</div></td>
+                                    <td class="p-4 whitespace-nowrap text-sm"><span class="px-2 py-0.5 text-xs font-semibold rounded-full bg-green-100 text-status-done">Selesai</span></td>
+                                    <td class="p-4 whitespace-nowrap text-sm text-slate-900 font-bold text-center">8</td>
+                                    <td class="p-4 whitespace-nowrap text-sm text-slate-900 font-bold text-center">100</td>
+                                    <td class="p-4 whitespace-nowrap text-sm text-green-600 font-semibold text-center">Ada</td>
+                                    <td class="p-4 whitespace-nowrap text-sm"><a href="admin_detail.html" class="px-3 py-1 text-xs font-medium rounded-md text-slate-600 bg-slate-200 hover:bg-slate-300 transition-all duration-300 transform hover:scale-105">Lihat</a></td>
+                                </tr>
+                                <tr class="hover:bg-slate-50 transition-colors duration-200">
+                                    <td class="p-4 whitespace-nowrap"><div class="text-sm font-medium text-slate-900">Aspirasi Aneh</div><div class="text-xs text-slate-500">Oleh: Anonim</div></td>
+                                    <td class="p-4 whitespace-nowrap text-sm"><span class="px-2 py-0.5 text-xs font-semibold rounded-full bg-red-100 text-status-reject">Ditolak</span></td>
+                                    <td class="p-4 whitespace-nowrap text-sm text-slate-900 font-bold text-center">0</td>
+                                    <td class="p-4 whitespace-nowrap text-sm text-slate-900 font-bold text-center">1</td>
+                                    <td class="p-4 whitespace-nowrap text-sm text-red-600 font-semibold text-center">Tidak</td>
+                                    <td class="p-4 whitespace-nowrap text-sm"><a href="admin_detail.html" class="px-3 py-1 text-xs font-medium rounded-md text-slate-600 bg-slate-200 hover:bg-slate-300 transition-all duration-300 transform hover:scale-105">Lihat</a></td>
                                 </tr>
                             </tbody>
                         </table>

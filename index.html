@@ -22,7 +22,7 @@
                             review: '#eab308',  // yellow-500
                             progress: '#3b82f6', // blue-500
                             done: '#22c55e',    // green-500
-                            reject: '#ef4444'   // red-500
+                            reject: '#ef4444'  // red-500
                         }
                     }
                 }
@@ -105,7 +105,15 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-slate-900 mb-3">Jalan Rusak di Jl. Merdeka</h3>
                         <p class="text-slate-700 text-sm mb-4">"Jalan berlubang parah, sudah diperbaiki oleh tim PU..."</p>
-                        <span class="inline-block bg-green-100 text-status-done text-xs font-semibold px-3 py-1 rounded-full">Selesai</span>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="inline-block bg-green-100 text-status-done text-xs font-semibold px-3 py-1 rounded-full">Selesai</span>
+                            <button class="flex items-center text-slate-500 hover:text-red-500 transition-colors duration-200 group">
+                                <svg class="w-5 h-5 mr-1 group-hover:fill-red-500 group-focus:fill-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-.318-.318a4.5 4.5 0 00-6.364 0z" />
+                                </svg>
+                                <span class="text-sm font-medium">1.2K</span>
+                            </button>
+                            </div>
                     </div>
                 </div>
                 
@@ -114,7 +122,15 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-slate-900 mb-3">Perbaikan Saluran Air</h3>
                         <p class="text-slate-700 text-sm mb-4">"Laporan diterima, tim sedang di lokasi untuk..."</p>
-                        <span class="inline-block bg-blue-100 text-status-progress text-xs font-semibold px-3 py-1 rounded-full">Dalam Pengerjaan</span>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="inline-block bg-blue-100 text-status-progress text-xs font-semibold px-3 py-1 rounded-full">Dalam Pengerjaan</span>
+                            <button class="flex items-center text-slate-500 hover:text-red-500 transition-colors duration-200 group">
+                                <svg class="w-5 h-5 mr-1 group-hover:fill-red-500 group-focus:fill-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-.318-.318a4.5 4.5 0 00-6.364 0z" />
+                                </svg>
+                                <span class="text-sm font-medium">890</span>
+                            </button>
+                            </div>
                     </div>
                 </div>
 
@@ -123,7 +139,15 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-slate-900 mb-3">Sampah Menumpuk di Pasar</h3>
                         <p class="text-slate-700 text-sm mb-4">"Tumpukan sampah sudah 3 hari, mohon ditindaklanjuti..."</p>
-                        <span class="inline-block bg-yellow-100 text-status-review text-xs font-semibold px-3 py-1 rounded-full">Dalam Tinjauan</span>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="inline-block bg-yellow-100 text-status-review text-xs font-semibold px-3 py-1 rounded-full">Dalam Tinjauan</span>
+                            <button class="flex items-center text-slate-500 hover:text-red-500 transition-colors duration-200 group">
+                                <svg class="w-5 h-5 mr-1 group-hover:fill-red-500 group-focus:fill-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-.318-.318a4.5 4.5 0 00-6.364 0z" />
+                                </svg>
+                                <span class="text-sm font-medium">350</span>
+                            </button>
+                            </div>
                     </div>
                 </div>
                 
@@ -132,7 +156,15 @@
                     <div class="p-6">
                         <h3 class="text-xl font-bold text-slate-900 mb-3">Lampu Jalan Mati</h3>
                         <p class="text-slate-700 text-sm mb-4">"Lampu di Jl. Diponegoro mati, rawan kejahatan..."</p>
-                        <span class="inline-block bg-orange-100 text-status-pending text-xs font-semibold px-3 py-1 rounded-full">Menunggu Verifikasi</span>
+                        <div class="flex justify-between items-center mt-4">
+                            <span class="inline-block bg-orange-100 text-status-pending text-xs font-semibold px-3 py-1 rounded-full">Menunggu Verifikasi</span>
+                            <button class="flex items-center text-slate-500 hover:text-red-500 transition-colors duration-200 group">
+                                <svg class="w-5 h-5 mr-1 group-hover:fill-red-500 group-focus:fill-red-500" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-.318-.318a4.5 4.5 0 00-6.364 0z" />
+                                </svg>
+                                <span class="text-sm font-medium">54</span>
+                            </button>
+                            </div>
                     </div>
                 </div>
 
@@ -153,6 +185,39 @@
         mobileMenuButton.addEventListener('click', () => {
             mobileMenu.classList.toggle('hidden');
         });
+        
+        // --- Skrip untuk fungsi Like (simulasi) ---
+        document.querySelectorAll('.flex.justify-between.items-center button').forEach(button => {
+            let isLiked = false;
+            const likeCountSpan = button.querySelector('span');
+            let initialCount = parseInt(likeCountSpan.textContent.replace('K', '000').replace('.', '')) || 0; // Mengambil jumlah awal
+            
+            button.addEventListener('click', () => {
+                const svg = button.querySelector('svg');
+                
+                if (isLiked) {
+                    // Unlike
+                    svg.classList.remove('fill-red-500');
+                    svg.classList.add('fill-none');
+                    initialCount--;
+                } else {
+                    // Like
+                    svg.classList.add('fill-red-500');
+                    svg.classList.remove('fill-none');
+                    initialCount++;
+                }
+                
+                isLiked = !isLiked;
+                
+                // Update tampilan angka
+                if (initialCount >= 1000) {
+                    likeCountSpan.textContent = (initialCount / 1000).toFixed(1).replace(/\.0$/, '') + 'K';
+                } else {
+                    likeCountSpan.textContent = initialCount;
+                }
+            });
+        });
+        // --- Akhir Skrip untuk fungsi Like ---
     </script>
 </body>
 </html>

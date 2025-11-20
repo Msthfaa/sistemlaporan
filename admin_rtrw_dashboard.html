@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Admin RT - Lapor Pemkab</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { brand: { 600: '#2563eb' } }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-100 text-slate-800 font-sans">
+
+    <header class="bg-white shadow-sm sticky top-0 z-40 px-4 py-4 flex justify-between items-center">
+        <div>
+            <h1 class="text-lg font-bold text-slate-900">Admin Wilayah</h1>
+            <p class="text-xs text-slate-500">RT 01 / RW 05, Desa Makmur</p>
+        </div>
+        <a href="admin_login.html" class="p-2 bg-red-50 text-red-600 rounded-lg text-xs font-bold">Logout</a>
+    </header>
+
+    <main class="max-w-lg mx-auto p-4 space-y-6">
+        
+        <div class="bg-gradient-to-r from-brand-600 to-blue-500 rounded-2xl p-6 text-white shadow-lg">
+            <h2 class="text-xl font-bold mb-1">Halo, Pak RT!</h2>
+            <p class="text-blue-100 text-sm mb-4">Ada <span class="font-bold text-white bg-white/20 px-2 py-0.5 rounded">2 Laporan Baru</span> yang butuh verifikasi Anda hari ini.</p>
+        </div>
+
+        <h3 class="font-bold text-slate-700 text-sm uppercase tracking-wide ml-1">Daftar Menunggu Verifikasi</h3>
+
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="p-5">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="px-2 py-1 bg-orange-100 text-orange-700 text-xs font-bold rounded">Lingkungan</span>
+                    <span class="text-xs text-slate-400">Hari ini, 09:00</span>
+                </div>
+                <h4 class="text-lg font-bold text-slate-900 mb-1">Sampah Menumpuk di Gang Buntu</h4>
+                <p class="text-sm text-slate-600 mb-3">"Baunya sangat menyengat dan menghalangi jalan warga..."</p>
+                <div class="flex items-center gap-2 mb-4">
+                    <div class="w-6 h-6 rounded-full bg-slate-200 flex items-center justify-center text-xs font-bold">S</div>
+                    <span class="text-sm font-medium text-slate-700">Ibu Susi (Warga Tetap)</span>
+                </div>
+                
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="accLaporan(this)" class="py-2.5 bg-emerald-600 text-white rounded-lg text-sm font-semibold shadow hover:bg-emerald-700">
+                        ✅ Teruskan ke Dinas
+                    </button>
+                    <button onclick="selesaiLokal(this)" class="py-2.5 bg-blue-600 text-white rounded-lg text-sm font-semibold shadow hover:bg-blue-700">
+                        🤝 Selesaikan Warga
+                    </button>
+                </div>
+                <button onclick="this.parentElement.parentElement.remove()" class="w-full mt-3 py-2 border border-red-200 text-red-600 rounded-lg text-sm font-medium hover:bg-red-50">
+                    Tolak Laporan
+                </button>
+            </div>
+        </div>
+
+        <div class="bg-white rounded-xl shadow-sm border border-slate-200 overflow-hidden">
+            <div class="p-5">
+                <div class="flex justify-between items-start mb-3">
+                    <span class="px-2 py-1 bg-purple-100 text-purple-700 text-xs font-bold rounded">PJU / Lampu</span>
+                    <span class="text-xs text-slate-400">Kemarin</span>
+                </div>
+                <h4 class="text-lg font-bold text-slate-900 mb-1">Lampu Jalan Mati Tiang 4</h4>
+                <p class="text-sm text-slate-600 mb-3">"Gelap gulita rawan kejahatan, mohon segera..."</p>
+                
+                <div class="grid grid-cols-2 gap-3">
+                    <button onclick="accLaporan(this)" class="py-2.5 bg-emerald-600 text-white rounded-lg text-sm font-semibold shadow hover:bg-emerald-700">
+                        ✅ Teruskan ke Dinas
+                    </button>
+                    <button onclick="selesaiLokal(this)" class="py-2.5 bg-blue-600 text-white rounded-lg text-sm font-semibold shadow hover:bg-blue-700">
+                        🤝 Ganti Sendiri
+                    </button>
+                </div>
+            </div>
+        </div>
+
+    </main>
+
+    <script>
+        function accLaporan(btn) {
+            if(confirm("Laporan Valid? Teruskan ke Dinas?")) {
+                const card = btn.closest('.bg-white');
+                card.classList.add('ring-2', 'ring-emerald-500', 'bg-emerald-50');
+                card.querySelector('.grid').innerHTML = '<div class="col-span-2 bg-emerald-100 text-emerald-800 text-center py-2 rounded-lg font-bold text-sm">✔ Berhasil Diteruskan</div>';
+            }
+        }
+        function selesaiLokal(btn) {
+            if(confirm("Diselesaikan warga sendiri?")) {
+                const card = btn.closest('.bg-white');
+                card.classList.add('ring-2', 'ring-blue-500', 'bg-blue-50');
+                card.querySelector('.grid').innerHTML = '<div class="col-span-2 bg-blue-100 text-blue-800 text-center py-2 rounded-lg font-bold text-sm">✔ Selesai di Tingkat RT</div>';
+            }
+        }
+    </script>
+</body>
+</html>

@@ -3,188 +3,235 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Buat Laporan Baru - Lapor Pemkab</title>
+    <title>Buat Laporan - Lapor Pemkab</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        primary: {
-                            DEFAULT: '#4f46e5', // indigo-600
-                            light: '#e0e7ff',  // indigo-100
-                            dark: '#3730a3'    // indigo-800
-                        }
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { brand: { 600: '#2563eb', 700: '#1d4ed8', 900: '#1e3a8a' } }
                 }
             }
         }
     </script>
+    <style>
+        /* Form styling yang lebih clean */
+        .form-group { @apply mb-6; }
+        .form-label { @apply block text-sm font-semibold text-slate-700 mb-2; }
+        .form-input { @apply w-full px-4 py-3 rounded-lg border border-slate-300 bg-white text-slate-900 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 outline-none transition-all shadow-sm; }
+        .form-section-title { @apply text-lg font-bold text-slate-900 mb-4 border-b border-slate-200 pb-2; }
+    </style>
 </head>
-<body class="bg-slate-100">
+<body class="bg-slate-50 text-slate-800 font-sans">
 
-    <nav class="bg-white shadow-md sticky top-0 z-50">
-        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-            <div class="flex justify-between items-center h-16">
-                <a href="index.html" class="text-2xl font-bold text-primary">
-                    Lapor<span class="font-light text-slate-800">Pemkab</span>
-                </a>
-                
-                <div class="hidden sm:flex sm:space-x-8">
-                    <a href="index.html" class="text-slate-500 hover:text-slate-700 hover:border-b-2 hover:border-slate-300 inline-flex items-center px-1 pt-1 text-sm font-medium transition-all duration-300">Beranda</a>
-                    <a href="lapor.html" class="text-primary border-b-2 border-primary inline-flex items-center px-1 pt-1 text-sm font-medium">Buat Laporan</a>
-                    <a href="status.html" class="text-slate-500 hover:text-slate-700 hover:border-b-2 hover:border-slate-300 inline-flex items-center px-1 pt-1 text-sm font-medium transition-all duration-300">Cek Status</a>
-                </div>
-                
-                <div class="hidden sm:block">
-                    <a href="admin_login.html" class="inline-flex items-center px-4 py-2 border border-transparent text-sm font-medium rounded-md text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-300 transform hover:scale-105">
-                        Login Admin
-                    </a>
-                </div>
-
-                <div class="sm:hidden flex items-center">
-                    <button id="mobile-menu-button" type="button" class="inline-flex items-center justify-center p-2 rounded-md text-slate-400 hover:text-slate-500 hover:bg-slate-100 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
-                        <svg class="block h-6 w-6" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
-                        </svg>
-                    </button>
-                </div>
-            </div>
-        </div>
-
-        <div id="mobile-menu" class="sm:hidden hidden">
-            <div class="px-2 pt-2 pb-3 space-y-1">
-                <a href="index.html" class="text-slate-700 hover:bg-slate-100 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">Beranda</a>
-                <a href="lapor.html" class="bg-primary-light text-primary block px-3 py-2 rounded-md text-base font-medium">Buat Laporan</a>
-                <a href="status.html" class="text-slate-700 hover:bg-slate-100 block px-3 py-2 rounded-md text-base font-medium transition-all duration-300">Cek Status</a>
-                <a href="admin_login.html" class="bg-primary text-white block px-3 py-2 rounded-md text-base font-medium mt-2 transition-all duration-300 transform hover:scale-105">Login Admin</a>
-            </div>
+    <nav class="bg-white border-b border-slate-200 sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-2">
+                <div class="w-8 h-8 bg-brand-600 rounded flex items-center justify-center text-white font-bold">L</div>
+                <span class="font-bold text-xl tracking-tight text-slate-900">Lapor<span class="text-brand-600">Pemkab</span></span>
+            </a>
+            <a href="index.html" class="text-sm font-medium text-slate-500 hover:text-brand-600 transition flex items-center">
+                <svg class="w-4 h-4 mr-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 19l-7-7m0 0l7-7m-7 7h18"></path></svg>
+                Batal & Kembali
+            </a>
         </div>
     </nav>
 
-    <main class="py-12">
-        <div class="max-w-4xl mx-auto bg-white p-8 md:p-10 rounded-lg shadow-xl">
-            <header class="text-center mb-8">
-                <h1 class="text-3xl font-bold text-slate-900">Formulir Laporan Baru</h1>
-                <p class="text-slate-600 mt-2">Sampaikan keluhan, saran, atau aspirasi Anda secara bertanggung jawab.</p>
-            </header>
-
-            <form id="reportForm" class="space-y-8">
-                
-                <fieldset class="border-t border-slate-200 pt-6">
-                    <legend class="text-xl font-semibold text-slate-800 mb-4">1. Identitas Pelapor</legend>
-                    <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-                        <div>
-                            <label for="nm_pelapor" class="block text-sm font-medium text-slate-700 mb-1">Nama Lengkap Sesuai KTP</label>
-                            <input type="text" id="nm_pelapor" name="nm_pelapor" placeholder="Contoh: Budi Santoso" required
-                                   class="w-full px-4 py-2 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
-                        </div>
-                        <div>
-                            <label for="nik" class="block text-sm font-medium text-slate-700 mb-1">NIK (16 Digit)</label>
-                            <input type="text" id="nik" name="nik" placeholder="16 Digit NIK Anda" required maxlength="16"
-                                   class="w-full px-4 py-2 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
-                        </div>
+    <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-10">
+        
+        <div class="lg:grid lg:grid-cols-12 lg:gap-12">
+            
+            <div class="hidden lg:block lg:col-span-4 relative">
+                <div class="sticky top-24 space-y-8">
+                    <div>
+                        <h1 class="text-3xl font-bold text-slate-900 mb-4">Sampaikan Aspirasi Anda</h1>
+                        <p class="text-slate-600 leading-relaxed">
+                            Laporan Anda adalah kunci perbaikan pelayanan publik. Pastikan data yang Anda masukkan valid agar dapat ditindaklanjuti oleh petugas.
+                        </p>
                     </div>
-                    <div class="mt-4 flex items-center">
-                        <input type="checkbox" id="visibilitas_nama" name="visibilitas_nama"
-                               class="h-4 w-4 text-primary border-slate-300 rounded focus:ring-primary">
-                        <label for="visibilitas_nama" class="ml-2 block text-sm text-slate-900">Laporkan secara Anonim (Nama Anda tidak akan dipublikasikan)</label>
-                    </div>
-                </fieldset>
 
-                <fieldset class="border-t border-slate-200 pt-6">
-                    <legend class="text-xl font-semibold text-slate-800 mb-4">2. Detail Laporan</legend>
-                    <div class="space-y-6">
-                        <div>
-                            <label for="nm_laporan" class="block text-sm font-medium text-slate-700 mb-1">Judul Laporan</label>
-                            <input type="text" id="nm_laporan" name="nm_laporan" placeholder="Contoh: Lampu Jalan Mati di Jl. Merdeka" required
-                                   class="w-full px-4 py-2 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
-                        </div>
-                        
-                        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                    <div class="space-y-0">
+                        <div class="flex items-start pb-8 border-l-2 border-brand-600 pl-6 relative">
+                            <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-brand-600 border-2 border-white"></span>
                             <div>
-                                <label for="bentuk_laporan" class="block text-sm font-medium text-slate-700 mb-1">Bentuk Laporan</label>
-                                <select id="bentuk_laporan" name="bentuk_laporan" required
-                                        class="w-full px-4 py-2 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
-                                    <option value="">-- Pilih Bentuk --</option>
-                                    <option value="keluhan">Keluhan</option>
-                                    <option value="saran">Saran</option>
-                                    <option value="aspirasi">Aspirasi</option>
-                                </select>
-                            </div>
-                            <div>
-                                <label for="jenis_laporan" class="block text-sm font-medium text-slate-700 mb-1">Kategori Laporan</label>
-                                <select id="jenis_laporan" name="jenis_laporan" required
-                                        class="w-full px-4 py-2 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
-                                    <option value="">-- Pilih Kategori --</option>
-                                    <option value="1">Jalan Rusak</option>
-                                    <option value="2">Sampah Menumpuk</option>
-                                    <option value="3">Lampu Jalan Mati</option>
-                                    <option value="4">Pelanggaran Lalu Lintas</option>
-                                </select>
+                                <h3 class="text-brand-600 font-bold text-sm uppercase tracking-wide">Langkah 1</h3>
+                                <p class="text-slate-900 font-medium">Data Diri Pelapor</p>
                             </div>
                         </div>
-
-                        <div>
-                            <label for="detail_laporan" class="block text-sm font-medium text-slate-700 mb-1">Detail Isi Laporan</label>
-                            <textarea id="detail_laporan" name="detail_laporan" rows="4" placeholder="Tuliskan detail keluhan/saran/aspirasi Anda di sini..." required
-                                      class="w-full px-4 py-2 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300"></textarea>
+                        <div class="flex items-start pb-8 border-l-2 border-slate-200 pl-6 relative">
+                            <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-300 border-2 border-white"></span>
+                            <div>
+                                <h3 class="text-slate-500 font-bold text-sm uppercase tracking-wide">Langkah 2</h3>
+                                <p class="text-slate-900 font-medium">Lokasi (Verifikasi RT/RW)</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start pl-6 relative">
+                            <span class="absolute -left-[9px] top-0 w-4 h-4 rounded-full bg-slate-300 border-2 border-white"></span>
+                            <div>
+                                <h3 class="text-slate-500 font-bold text-sm uppercase tracking-wide">Langkah 3</h3>
+                                <p class="text-slate-900 font-medium">Detail & Bukti</p>
+                            </div>
                         </div>
                     </div>
-                </fieldset>
 
-                <fieldset class="border-t border-slate-200 pt-6">
-                    <legend class="text-xl font-semibold text-slate-800 mb-4">3. Tujuan & Bukti</legend>
-                    <div class="space-y-6">
-                        <div>
-                            <label for="instansi_tujuan" class="block text-sm font-medium text-slate-700 mb-1">Ditujukan Kepada</label>
-                            <select id="instansi_tujuan" name="instansi_tujuan" required
-                                    class="w-full px-4 py-2 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
-                                <option value="">-- Pilih Instansi Tujuan --</option>
-                                <option value="1">Dinas Pekerjaan Umum</option>
-                                <option value="2">Dinas Lingkungan Hidup</option>
-                                <option value="3">Satuan Polisi Pamong Praja</option>
-                                <option value="4">Dinas Perhubungan</option>
-                            </select>
-                        </div>
-                        <div>
-                            <label for="bukti_laporan" class="block text-sm font-medium text-slate-700 mb-1">Lampirkan Bukti (Foto)</label>
-                            <input type="file" id="bukti_laporan" name="bukti_laporan" accept="image/*" required
-                                   class="w-full text-sm text-slate-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-primary-light file:text-primary hover:file:bg-indigo-200 transition-colors duration-300 cursor-pointer">
-                            <p class="text-xs text-slate-500 mt-1">Bukti yang relevan (foto/video) sangat penting untuk verifikasi.</p>
-                        </div>
+                    <div class="bg-blue-50 p-5 rounded-xl border border-blue-100">
+                        <h4 class="font-semibold text-blue-900 mb-2 text-sm flex items-center">
+                            <svg class="w-4 h-4 mr-2" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"></path></svg>
+                            Info Penting
+                        </h4>
+                        <p class="text-sm text-blue-800">
+                            Laporan akan masuk ke dashboard <strong>Ketua RT</strong> setempat untuk verifikasi awal sebelum diteruskan ke Dinas Pemkab.
+                        </p>
                     </div>
-                </fieldset>
-                
-                <div class="border-t border-slate-200 pt-6">
-                    <button type="submit" class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-lg text-lg font-medium text-white bg-primary hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary transition-all duration-300 transform hover:scale-[1.02]">
-                        Kirim Laporan
-                    </button>
                 </div>
+            </div>
 
-            </form>
+            <div class="lg:col-span-8 mt-6 lg:mt-0">
+                <form id="reportForm" class="bg-white shadow-xl shadow-slate-200/60 rounded-2xl border border-slate-200 overflow-hidden">
+                    
+                    <div class="p-8 md:p-10 space-y-10">
+                        
+                        <section>
+                            <div class="flex items-center justify-between mb-6">
+                                <h2 class="text-xl font-bold text-slate-900">1. Identitas Pelapor</h2>
+                                <span class="text-xs font-semibold px-2 py-1 bg-slate-100 text-slate-500 rounded">Rahasia</span>
+                            </div>
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="form-group">
+                                    <label class="form-label">Nama Lengkap (Sesuai KTP)</label>
+                                    <input type="text" class="form-input" placeholder="Contoh: Budi Santoso" required>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">NIK (16 Digit)</label>
+                                    <input type="text" class="form-input" maxlength="16" placeholder="320xxxxxxxxxxxxx" required>
+                                </div>
+                            </div>
+                            <div class="flex items-center mt-2">
+                                <input type="checkbox" id="anonim" class="w-4 h-4 text-brand-600 rounded border-gray-300 focus:ring-brand-600">
+                                <label for="anonim" class="ml-2 text-sm text-slate-600">Laporkan sebagai Anonim (Nama disamarkan)</label>
+                            </div>
+                        </section>
+
+                        <hr class="border-slate-100">
+
+                        <section>
+                            <h2 class="text-xl font-bold text-slate-900 mb-2">2. Lokasi Kejadian</h2>
+                            <p class="text-sm text-slate-500 mb-6">Pilih lokasi agar laporan masuk ke RT/RW yang tepat.</p>
+                            
+                            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                                <div class="form-group">
+                                    <label class="form-label">Kecamatan</label>
+                                    <div class="relative">
+                                        <select class="form-input appearance-none" required>
+                                            <option value="">-- Pilih Kecamatan --</option>
+                                            <option value="k1">Kecamatan Sukamaju</option>
+                                        </select>
+                                        <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-slate-500">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Desa / Kelurahan</label>
+                                    <div class="relative">
+                                        <select class="form-input appearance-none" required>
+                                            <option value="">-- Pilih Desa --</option>
+                                            <option value="d1">Desa Makmur</option>
+                                        </select>
+                                        <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-slate-500">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Nomor RW</label>
+                                    <div class="relative">
+                                        <select class="form-input appearance-none" required>
+                                            <option value="">-- Pilih RW --</option>
+                                            <option value="05">RW 05</option>
+                                        </select>
+                                        <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-slate-500">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <label class="form-label">Nomor RT</label>
+                                    <div class="relative">
+                                        <select class="form-input appearance-none bg-blue-50/50 border-blue-200 text-blue-900" required>
+                                            <option value="">-- Pilih RT --</option>
+                                            <option value="01">RT 01</option>
+                                        </select>
+                                        <div class="absolute inset-y-0 right-0 flex items-center px-3 pointer-events-none text-blue-500">
+                                            <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
+                                        </div>
+                                    </div>
+                                    <p class="text-xs text-blue-600 mt-2 flex items-center font-medium">
+                                        <span class="inline-block w-1.5 h-1.5 bg-blue-600 rounded-full mr-1.5"></span>
+                                        Verifikator: Ketua RT 01
+                                    </p>
+                                </div>
+                            </div>
+                        </section>
+
+                        <hr class="border-slate-100">
+
+                        <section>
+                            <h2 class="text-xl font-bold text-slate-900 mb-6">3. Detail Masalah</h2>
+                            
+                            <div class="form-group">
+                                <label class="form-label">Judul Laporan</label>
+                                <input type="text" class="form-input" placeholder="Singkat dan jelas, misal: Jalan Rusak" required>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Kronologi & Deskripsi Lengkap</label>
+                                <textarea rows="5" class="form-input resize-y" placeholder="Jelaskan permasalahan sedetail mungkin..." required></textarea>
+                            </div>
+
+                            <div class="form-group">
+                                <label class="form-label">Upload Bukti Pendukung</label>
+                                <div class="mt-1 flex justify-center px-6 pt-5 pb-6 border-2 border-slate-300 border-dashed rounded-lg hover:bg-slate-50 transition cursor-pointer group">
+                                    <div class="space-y-1 text-center">
+                                        <svg class="mx-auto h-12 w-12 text-slate-400 group-hover:text-brand-500 transition" stroke="currentColor" fill="none" viewBox="0 0 48 48" aria-hidden="true">
+                                            <path d="M28 8H12a4 4 0 00-4 4v20m32-12v8m0 0v8a4 4 0 01-4 4H12a4 4 0 01-4-4v-4m32-4l-3.172-3.172a4 4 0 00-5.656 0L28 28M8 32l9.172-9.172a4 4 0 015.656 0L28 28m0 0l4 4m4-24h8m-4-4v8m-12 4h.02" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" />
+                                        </svg>
+                                        <div class="flex text-sm text-slate-600">
+                                            <label for="file-upload" class="relative cursor-pointer rounded-md font-medium text-brand-600 hover:text-brand-500 focus-within:outline-none">
+                                                <span>Upload foto</span>
+                                                <input id="file-upload" name="file-upload" type="file" class="sr-only" required>
+                                            </label>
+                                            <p class="pl-1">atau drag ke sini</p>
+                                        </div>
+                                        <p class="text-xs text-slate-500">PNG, JPG, GIF up to 10MB</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </section>
+
+                    </div>
+
+                    <div class="bg-slate-50 px-8 py-6 border-t border-slate-200 flex flex-col sm:flex-row items-center justify-between gap-4">
+                        <p class="text-xs text-slate-500 text-center sm:text-left">
+                            Dengan mengirim, Anda menyetujui <a href="#" class="text-brand-600 hover:underline">Syarat & Ketentuan</a>.
+                        </p>
+                        <button type="submit" class="w-full sm:w-auto px-8 py-3.5 bg-brand-600 text-white font-bold rounded-lg shadow-lg shadow-brand-600/20 hover:bg-brand-700 transition transform hover:scale-[1.02] focus:ring-4 focus:ring-brand-600/30">
+                            Kirim Laporan
+                        </button>
+                    </div>
+
+                </form>
+            </div>
+
         </div>
     </main>
 
-    <footer class="bg-white border-t border-slate-200 mt-12">
-        <div class="max-w-7xl mx-auto py-8 px-4 sm:px-6 lg:px-8 text-center text-slate-500 text-sm">
-            &copy; 2025 Lapor Pemkab. Sistem Aspirasi & Pengaduan Publik.
-        </div>
-    </footer>
-
     <script>
-        // --- Mobile Menu ---
-        const mobileMenuButton = document.getElementById('mobile-menu-button');
-        const mobileMenu = document.getElementById('mobile-menu');
-        mobileMenuButton.addEventListener('click', () => {
-            mobileMenu.classList.toggle('hidden');
-        });
-        
-        // --- Simulasi Form (Statis) ---
         document.getElementById('reportForm').addEventListener('submit', function(event) {
-            event.preventDefault(); 
-            alert('Laporan Anda Berhasil Dikirim (Simulasi)!\nAnda akan diarahkan ke halaman status.');
-            // Mengarahkan ke halaman status statis
+            event.preventDefault();
+            alert('Laporan Berhasil Dikirim! \nLaporan akan diverifikasi terlebih dahulu oleh Admin RT.');
             window.location.href = 'status.html';
         });
     </script>

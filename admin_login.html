@@ -3,65 +3,75 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login Admin - Lapor Pemkab</title>
+    <title>Login Admin System</title>
     <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <script>
         tailwind.config = {
             theme: {
                 extend: {
-                    colors: {
-                        primary: {
-                            DEFAULT: '#4f46e5', // indigo-600
-                            dark: '#3730a3'    // indigo-800
-                        }
-                    }
+                    fontFamily: { sans: ['Inter', 'sans-serif'] },
+                    colors: { brand: { 600: '#2563eb', 900: '#1e3a8a' } }
                 }
             }
         }
     </script>
 </head>
-<body class="bg-gradient-to-br from-slate-900 to-slate-800">
+<body class="bg-white h-screen flex overflow-hidden font-sans">
 
-    <div class="flex min-h-screen items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
-        <div class="bg-white p-8 md:p-10 rounded-xl shadow-2xl w-full max-w-md space-y-8">
-            
-            <div>
-                <h2 class="text-3xl font-bold text-center text-primary">
-                    Admin Panel
-                </h2>
-                <p class="mt-2 text-center text-sm text-slate-600">
-                    Sistem Manajemen Laporan Pemkab
-                </p>
-            </div>
-            
-            <form class="space-y-6" action="admin_dashboard.html">
-                <div>
-                    <label for="email" class="block text-sm font-medium text-slate-700">Email Admin</label>
-                    <div class="mt-1">
-                        <input id="email" name="email" type="email" autocomplete="email" required value="admin.pu@example.com"
-                               class="w-full px-4 py-3 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
-                    </div>
-                </div>
-
-                <div>
-                    <label for="password" class="block text-sm font-medium text-slate-700">Password</label>
-                    <div class="mt-1">
-                        <input id="password" name="password" type="password" autocomplete="current-password" required value="password"
-                               class="w-full px-4 py-3 bg-white border-0 rounded-md shadow-sm ring-1 ring-inset ring-gray-300 focus:ring-2 focus:ring-inset focus:ring-primary transition-all duration-300">
-                    </div>
-                </div>
-
-                <div>
-                    <button type="submit"
-                            class="w-full flex justify-center py-3 px-4 border border-transparent rounded-md shadow-lg text-lg font-medium text-white bg-primary
-                                   hover:bg-primary-dark focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-primary
-                                   transition-all duration-300 transform hover:scale-105">
-                        Login
-                    </button>
-                </div>
-            </form>
+    <div class="hidden lg:flex w-1/2 bg-slate-900 relative items-center justify-center">
+        <div class="absolute inset-0 bg-gradient-to-br from-brand-900 to-slate-900 opacity-90 z-10"></div>
+        <img src="https://images.unsplash.com/photo-1497366216548-37526070297c?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" class="absolute inset-0 w-full h-full object-cover" alt="Office">
+        <div class="relative z-20 text-white text-center p-12">
+            <h2 class="text-4xl font-bold mb-4">Government Dashboard</h2>
+            <p class="text-slate-300 text-lg max-w-md mx-auto">Sistem manajemen laporan terpadu untuk efisiensi pelayanan publik dan transparansi.</p>
         </div>
     </div>
 
+    <div class="w-full lg:w-1/2 flex items-center justify-center p-8 bg-slate-50">
+        <div class="w-full max-w-md bg-white p-10 rounded-2xl shadow-2xl border border-slate-100">
+            <div class="mb-8 text-center">
+                <h1 class="text-2xl font-bold text-slate-900">Selamat Datang Kembali</h1>
+                <p class="text-slate-500 mt-1">Silakan masuk ke akun manajemen Anda</p>
+            </div>
+
+            <form class="space-y-6" onsubmit="handleLogin(event)">
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Akses Sebagai</label>
+                    <select id="role" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 bg-white transition-all cursor-pointer">
+                        <option value="pemkab">Admin Dinas / Pemkab</option>
+                        <option value="rtrw">Admin RT / RW (Wilayah)</option>
+                    </select>
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Email</label>
+                    <input type="email" value="admin@pemerintah.go.id" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 transition-all">
+                </div>
+
+                <div>
+                    <label class="block text-sm font-semibold text-slate-700 mb-2">Password</label>
+                    <input type="password" value="password" class="w-full px-4 py-3 rounded-lg border border-slate-300 focus:border-brand-600 focus:ring-2 focus:ring-brand-600/20 transition-all">
+                </div>
+
+                <button type="submit" class="w-full py-3.5 bg-brand-600 text-white font-semibold rounded-lg hover:bg-brand-700 transition shadow-lg hover:shadow-brand-600/30">
+                    Masuk ke Dashboard
+                </button>
+            </form>
+
+            <p class="mt-8 text-center text-xs text-slate-400">
+                &copy; 2025 Pemerintah Kabupaten. Secured System.
+            </p>
+        </div>
+    </div>
+
+    <script>
+        function handleLogin(e) {
+            e.preventDefault();
+            const role = document.getElementById('role').value;
+            if (role === 'pemkab') window.location.href = 'admin_dashboard.html';
+            else window.location.href = 'admin_rtrw_dashboard.html';
+        }
+    </script>
 </body>
 </html>
